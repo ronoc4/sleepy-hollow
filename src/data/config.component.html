@@ -1,0 +1,22 @@
+<h3> Get JSON data from Headless Drupal</h3>
+<div>
+  <button class="button" (click)="clear(); showConfig()">Display Blogs</button>
+  <button class="button button-secondary" (click)="clear(); getJSON()">Get the raw JSON</button>
+  <button class="button button-clear" (click)="clear()">Clear</button>
+</div>
+<div *ngIf="config">
+  <h3> Drupal Blogs from API</h3>
+  <ul style="list-style-type: none">
+    <li class="drupal-post" *ngFor="let configs of config">
+      <h3>{{configs.title[0].value}}</h3>
+      <img src="{{configs.field_image[0].url}}" height="200" width="200">
+      <p [innerHTML]="configs.body[0].value"></p>
+    </li>
+  </ul>
+</div>
+
+<div class="spacer">
+  <div *ngFor="let post of posts ">
+    {{post | json }}
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+  <h3>Please log in to continue</h3>
+  <form #loginForm="ngForm" (submit)="userLogin()">
+    <div class="form-group">
+      <label for="userName">User Name:</label>
+      <input type="text" id="userName"
+             required
+             [(ngModel)]="username" name="userName"
+             #ctrl="ngModel">
+      <div [hidden]="ctrl.valid || ctrl.pristine">User Name is Required</div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password"
+             required
+             [(ngModel)]="password" name="password"
+             #ctrlPw="ngModel">
+      <div [hidden]="ctrlPw.valid || ctrlPw.pristine">Password is Required</div>
+    </div>
+
+    <button type="submit" class="button">Submit</button>
+  </form>
+  <span>{{error | json}}</span>
+</div>
